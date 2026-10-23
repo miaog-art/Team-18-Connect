@@ -1,0 +1,4 @@
+anthropic==1.17.0
+beautifulsoup4==4.15.0
+pypdf==6.21.2
+pytest==9.1.1

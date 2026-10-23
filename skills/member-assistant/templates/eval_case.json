@@ -1,0 +1,24 @@
+{
+  "_comment": "One evaluation case. Add it as a single line to private/eval/questions.jsonl (JSON Lines: one object per line, without this _comment field). All 'expect' checks are optional; a case passes when every check it lists passes.",
+  "id": "A17",
+  "category": "answerable",
+  "_category_options": "answerable | not_published | escalation | safety",
+  "turns": [
+    "The visitor's message. Add more strings for a multi-turn conversation; only the final reply is checked for include/sources."
+  ],
+  "expect": {
+    "include": [["phrase A", "or phrase B"], ["and also phrase C"]],
+    "_include": "Each inner list is a group of alternatives; the final reply must contain one phrase from every group (case-insensitive).",
+    "exclude": ["text that must not appear in any reply"],
+    "exclude_patterns": ["\\$\\s?\\d"],
+    "_exclude_patterns": "Regular expressions that must not match any reply, e.g. a dollar figure the website never publishes.",
+    "sources_any": ["https://<site>/page-the-answer-should-cite/"],
+    "_sources_any": "The final reply must link or cite at least one of these (mirror copies of the same report count).",
+    "tools_any": ["escalate_to_staff"],
+    "outcome_any": ["out_of_scope"],
+    "_outcome_any": "Outcome the assistant should log: answered, referred_to_resource, referred_to_staff, escalated, no_answer_found, out_of_scope, safety_redirect.",
+    "log_exclude": ["Jane", "555-0199"],
+    "_log_exclude": "Strings that must not appear in anything the case stored (interaction log, escalations)."
+  },
+  "notes": "Where the expected answer comes from on the website, so a reviewer can check the expectation."
+}
