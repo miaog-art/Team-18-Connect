@@ -1,0 +1,15 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local secrets
+.env
+
+# Client-specific data (crawled site, reports, contacts, logs, eval set). Kept out of the
+# public repo because the client identity is confidential until they approve sharing.
+private/
+
+# macOS
+.DS_Store
