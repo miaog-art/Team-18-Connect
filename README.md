@@ -45,7 +45,7 @@ The client asked for two things: a website that engages visitors instead of acti
 | Pretrained model | Claude Opus 5.5 (`claude-opus-5-5`) via the Anthropic Python SDK, with adaptive thinking and server-side refusal fallback. Claude Sonnet 5.5 grades grounding in the evaluation. |
 | 5+ custom agentic tools with LLM-facing docs | Six tools in `member_assistant/tools.py`. Every schema is strict, and topics, roles, and outcomes are enums, so the needs log can be aggregated. |
 | Skill folder | `skills/member-assistant/SKILL.md` and four templates: needs-report review, website change request, escalation review, evaluation case. |
-| Evaluation | `member_assistant/evaluate.py`: test cases with programmatic checks, run with and without guardrails, optional LLM grounding judge. 27 unit tests in `tests/` run offline. |
+| Evaluation | `member_assistant/evaluate.py`: test cases with programmatic checks, run with and without guardrails, optional LLM grounding judge. 32 unit tests in `tests/` run offline. |
 | Data protection / simulated data | Public website content only. Redaction before storage (`privacy.py`), no contact details collected, raw logs kept out of the repo. Unit tests use synthetic fixtures. |
 | Safety guardrails | `member_assistant/guardrails.py`: grounded-answer rules, emergency screen, link/email verification, redaction. Details below. |
 | With vs. without guardrails | `python -m member_assistant.evaluate` runs every case in both conditions; results below. |
