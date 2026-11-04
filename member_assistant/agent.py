@@ -8,6 +8,7 @@ the model's thinking blocks valid across turns.
 
 import secrets
 import time
+import warnings
 from collections import Counter
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -266,6 +267,9 @@ class Assistant:
     def _cost(self, usage: Counter) -> float:
         p = PRICES.get(self.model)
         if not p:
+            # Without a price entry the cost would silently read $0; say so once instead.
+            warnings.warn(f"No price entry for model {self.model!r} in agent.PRICES; cost_usd will be 0.",
+                          stacklevel=2)
             return 0.0
         return (usage["input_tokens"] * p["input"] + usage["output_tokens"] * p["output"]
                 + usage["cache_creation_input_tokens"] * p["cache_write"]
@@ -275,14 +279,18 @@ class Assistant:
         """Append one record to the interaction log. With guardrails on, text is redacted first."""
         redacted = self.redactor.redact(question)
         need = dict(reply.need)
+        stored_question = question
         if self.guardrails:
             need["need"] = scrub(self.redactor.redact(need["need"]).text, self.sensitive)
+            # Details given in earlier turns ("I'm Jane ...") must also go when they reappear without a
+            # pattern the redactor recognizes ("Jane here again ...").
+            stored_question = scrub(redacted.text, self.sensitive)
         sources = list(dict.fromkeys(need.get("sources", []) + [c["source"] for c in reply.citations]))
         record = {
             "ts": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "session": self.session_id,
             "guardrails": self.guardrails,
-            "question": redacted.text if self.guardrails else question,
+            "question": stored_question,
             "topic": need["topic"],
             "need": need["need"],
             "visitor_role": need["visitor_role"],

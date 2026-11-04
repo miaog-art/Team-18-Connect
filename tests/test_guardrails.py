@@ -12,6 +12,15 @@ def test_emergency_screen_is_narrow():
     assert not is_emergency("Do you offer suicide prevention training for officers?")
 
 
+def test_emergency_screen_catches_self_harm_phrasing():
+    assert is_emergency("I keep thinking I might hurt myself")
+    assert is_emergency("I've been self-harming again")
+    assert is_emergency("Honestly there's no reason to live anymore")
+    assert is_emergency("Everyone would be better off dead without me")
+    assert not is_emergency("Do you have self-harm prevention resources for our schools?")
+    assert not is_emergency("Our council wants to talk about self harm awareness month")
+
+
 def test_link_key_normalizes_drive_and_slashes():
     assert link_key("https://drive.google.com/file/d/ABC123/view?usp=sharing") == "drive:ABC123"
     assert link_key("https://www.Example.org/solar/") == link_key("https://example.org/solar")
