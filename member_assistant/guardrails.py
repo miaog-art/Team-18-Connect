@@ -35,7 +35,9 @@ EMERGENCY_RE = re.compile(
     r"|someone (?:is|has been|was just) (?:shot|stabbed)"
     r"|suicidal|kill (?:myself|himself|herself|themselves)|end(?:ing)? (?:my|his|her|their) (?:own )?life"
     r"|want to die|(?:thinking|thought) (?:about|of) (?:suicide|killing myself)"
-    r"|hurt(?:ing)? myself|(?:i'?m|i am|been|keep) (?:self[- ]harming|cutting myself)"
+    r"|(?:want(?:ing)? to|going to|gonna|might|keep|kept|been|thinking (?:about|of)|i'?ll|i will)"
+    r" (?:hurt|hurting) myself|hurt(?:ing)? myself (?:on purpose|again)"
+    r"|(?:i'?m|i am|been|keep) (?:self[- ]harming|cutting myself)"
     r"|no reason to live|better off dead)\b",
     re.IGNORECASE,
 )

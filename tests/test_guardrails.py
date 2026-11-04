@@ -19,6 +19,8 @@ def test_emergency_screen_catches_self_harm_phrasing():
     assert is_emergency("Everyone would be better off dead without me")
     assert not is_emergency("Do you have self-harm prevention resources for our schools?")
     assert not is_emergency("Our council wants to talk about self harm awareness month")
+    # An on-the-job injury is a workplace-safety question, not a crisis.
+    assert not is_emergency("I hurt myself at work yesterday, who do I report it to?")
 
 
 def test_link_key_normalizes_drive_and_slashes():
