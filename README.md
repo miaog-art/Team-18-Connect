@@ -96,7 +96,7 @@ python -m member_assistant.report
 pytest
 ```
 
-Each visitor message costs about $0.05 and takes 20 to 45 seconds with Claude Opus 5.5 at medium effort.
+Each visitor message costs about $0.04 and takes 20 to 45 seconds with Claude Opus 5.5 at medium effort.
 
 ## Repository layout
 
@@ -122,7 +122,7 @@ The assistant only repeats what the organization publishes and tells visitors wh
 
 | Member | GitHub |
 | --- | --- |
-| Wenjun Chen | _add profile link_ |
+| Wenjun Chen | [Ireton123](https://github.com/Ireton123) |
 | Andy Nguyen | _add profile link_ |
 | Miao Guo | [miaog-art](https://github.com/miaog-art) |
 | Leo Chikava | _add profile link_ |
