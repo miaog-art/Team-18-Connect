@@ -125,7 +125,7 @@ The assistant only repeats what the organization publishes and tells visitors wh
 | Wenjun Chen | [Ireton123](https://github.com/Ireton123) |
 | Andy Nguyen | _add profile link_ |
 | Miao Guo | [miaog-art](https://github.com/miaog-art) |
-| Leo Chikava | _add profile link_ |
+| Leo Chikava | [lchikava](https://github.com/lchikava) |
 
 ## References
 
